@@ -21,8 +21,7 @@ const DropdownButton = (props) => {
             onClick={(event) => {
               props.readingList(
                 event.target.textContent,
-                props.bookTitle,
-                props.bookAuthor,
+                props.bookData,
                 props.picUrl
               );
             }}
@@ -37,8 +36,7 @@ const DropdownButton = (props) => {
             onClick={(event) => {
               props.readingList(
                 event.target.textContent,
-                props.bookTitle,
-                props.bookAuthor,
+                props.bookData,
                 props.picUrl
               );
             }}
@@ -53,8 +51,7 @@ const DropdownButton = (props) => {
             onClick={(event) => {
               props.readingList(
                 event.target.textContent,
-                props.bookTitle,
-                props.bookAuthor,
+                props.bookData,
                 props.picUrl
               );
             }}
@@ -69,8 +66,7 @@ const DropdownButton = (props) => {
             onClick={(event) => {
               props.readingList(
                 event.target.textContent,
-                props.bookTitle,
-                props.bookAuthor,
+                props.bookData,
                 props.picUrl
               );
             }}

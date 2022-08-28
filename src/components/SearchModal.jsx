@@ -13,7 +13,7 @@ class SearchModal extends React.Component {
       if (this.state.searchTerm) {
         this.search();
       }
-    }, 500);
+    }, 1000);
     this.setState({ timeOutId: timeId });
   };
 
@@ -58,6 +58,7 @@ class SearchModal extends React.Component {
             <Cards
               data={this.state.results}
               readingList={this.props.readingList}
+              bookDetailsHandler={this.props.bookDetailsHandler}
             />
           </div>
         </div>

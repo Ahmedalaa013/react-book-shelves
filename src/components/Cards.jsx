@@ -1,10 +1,13 @@
+import { Link } from "react-router-dom";
 import DropdownButton from "./Dropdown";
 
 const Cards = (props) => {
   let imgurl = "";
+  let bookDetails = {};
 
   const list = props.data.map((book, index) => {
     imgurl = `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;
+    bookDetails = { bookData: book, bookImg: imgurl };
     return (
       <div className="col" key={index}>
         <div
@@ -12,17 +15,38 @@ const Cards = (props) => {
           style={{ width: "11rem" }}
         >
           <div className="position-relative">
-            <img src={imgurl} className="card-img-top " alt={book.title} />
+            <Link
+              to={{
+                pathname: "/bookDetails",
+                state: { bookDetails },
+              }}
+            >
+              <img
+                src={imgurl}
+                className="card-img-top "
+                data-bs-dismiss="modal"
+                alt={book.title}
+              />
+            </Link>
             <DropdownButton
-              bookTitle={book.title}
-              bookAuthor={book.author_name}
+              bookData={book}
               picUrl={imgurl}
               readingList={props.readingList}
             />
           </div>
 
           <div className="card-body">
-            <h6 className="card-title">{book.title}</h6>
+            <Link
+              to={{
+                pathname: "/bookDetails",
+                state: { bookDetails },
+              }}
+              style={{ textDecoration: "none" }}
+            >
+              <h6 className="card-title text-dark" data-bs-dismiss="modal">
+                {book.title}
+              </h6>
+            </Link>
             <p className="card-text text-muted">{book.author_name}</p>
           </div>
         </div>

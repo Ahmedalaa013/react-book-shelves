@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import DropdownButton from "./Dropdown";
 const Section = (props) => {
   if (props.data) {
@@ -9,18 +10,40 @@ const Section = (props) => {
             style={{ width: "11rem" }}
           >
             <div className="position-relative">
-              <img src={book.url} className="card-img-top " alt={book.title} />
+              <Link
+                to={{
+                  pathname: "/bookDetails",
+                  state: { bookDetails: book },
+                }}
+              >
+                <img
+                  src={book.bookImg}
+                  className="card-img-top "
+                  alt={book.bookData.title}
+                />
+              </Link>
+
               <DropdownButton
-                bookTitle={book.title}
-                bookAuthor={book.name}
-                picUrl={book.url}
+                bookData={book.bookData}
+                picUrl={book.bookImg}
                 readingList={props.readingList}
               />
             </div>
 
             <div className="card-body">
-              <h6 className="card-title">{book.title}</h6>
-              <p className="card-text text-muted">{book.name}</p>
+              <Link
+                to={{
+                  pathname: "/bookDetails",
+                  state: { bookDetails: book },
+                }}
+                style={{ textDecoration: "none" }}
+              >
+                <h6 className="card-title text-dark">{book.bookData.title}</h6>
+              </Link>
+
+              <p className="card-text text-muted">
+                {book.bookData.author_name}
+              </p>
             </div>
           </div>
         </div>
