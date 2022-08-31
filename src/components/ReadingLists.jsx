@@ -12,12 +12,21 @@ class ReadingLists extends React.Component {
     this.readList = [];
   }
   componentDidMount = () => {
-    const currentlyListStorage = JSON.parse(
+    let currentlyListStorage = JSON.parse(
       localStorage.getItem("currentlyReading")
     );
-    const wantToListStorage = JSON.parse(localStorage.getItem("WantToRead"));
-    const readListStorage = JSON.parse(localStorage.getItem("Read"));
+    let wantToListStorage = JSON.parse(localStorage.getItem("WantToRead"));
+    let readListStorage = JSON.parse(localStorage.getItem("Read"));
 
+    currentlyListStorage
+      ? (this.currentReadList = currentlyListStorage)
+      : (currentlyListStorage = []);
+    wantToListStorage
+      ? (this.wantToListStorage = wantToListStorage)
+      : (wantToListStorage = []);
+    readListStorage
+      ? (this.readListStorage = readListStorage)
+      : (readListStorage = []);
     this.currentReadList = currentlyListStorage;
     this.wantToReadList = wantToListStorage;
     this.readList = readListStorage;
